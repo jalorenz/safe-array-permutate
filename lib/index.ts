@@ -1,4 +1,1 @@
-
-export function func() {
-  return 1;
-}
+export * from "./core"
