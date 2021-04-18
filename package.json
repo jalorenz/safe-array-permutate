@@ -1,0 +1,31 @@
+{
+  "name": "safe-array-permutate",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc",
+    "test": "jest",
+    "test:coverage": "jest --coverage",
+    "test:coverage:ci": "jest --coverage && cat ./coverage/lcov.info | coveralls",
+    "prettier:format": "prettier --config .prettierrc 'lib/**/*.ts' 'test/*.ts' --write"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jalorenz/safe-array-permutate.git"
+  },
+  "author": "Jannik Lorenz <janniklorenz1994@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jalorenz/safe-array-permutate/issues"
+  },
+  "homepage": "https://github.com/jalorenz/safe-array-permutate#readme",
+  "devDependencies": {
+    "@types/jest": "^26.0.22",
+    "coveralls": "^3.1.0",
+    "jest": "^26.6.3",
+    "prettier": "^2.2.1",
+    "ts-jest": "^26.5.5",
+    "typescript": "^4.2.4"
+  }
+}
