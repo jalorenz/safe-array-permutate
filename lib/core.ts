@@ -33,10 +33,12 @@ export default function permutate(
   };
 
   const result: any[] = [];
-  if (options.mode === PermutateMode.random) {
-    for (let i = 0; i < options.maxCombinationsLength - 1; i++) {
+  if (options.mode == PermutateMode.random) {
+    for (let i = 0; i < options.maxCombinationsLength; i++) {
       result[i] = shuffle(input);
     }
+  } else {
+    // default mode, use recursive algorithm
   }
 
   return result;

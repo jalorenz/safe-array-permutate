@@ -1,6 +1,6 @@
 export enum PermutateMode {
-  random,
-  default
+  random = "random",
+  default = "default"
 }
 
 export interface IIncomingOptions {

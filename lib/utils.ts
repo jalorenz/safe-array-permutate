@@ -23,13 +23,14 @@ export function computeCombinationsLength(
 // https://stackoverflow.com/questions/6274339/how-can-i-shuffle-an-array
 /* istanbul ignore next */
 export function shuffle(input: any[]): any[] {
-  for (let i = input.length - 1; i > 0; i--) {
+  const shuffled = new Array(...input);
+  for (let i = shuffled.length - 1; i > 0; i--) {
     const j: number = Math.floor(Math.random() * (i + 1));
-    let tmp = input[i];
-    input[i] = input[j];
-    input[j] = tmp;
+    let tmp = shuffled[i];
+    shuffled[i] = shuffled[j];
+    shuffled[j] = tmp;
   }
-  return input;
+  return shuffled;
 }
 
 export function getReplication(replication?: boolean): boolean {
