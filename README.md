@@ -12,6 +12,9 @@ const result = permutate(input, {
     replication: true,  
     maxCombinationsLength: Infinity,
 })
+
+
+
 ```
 
 ## Options

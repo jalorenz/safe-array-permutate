@@ -13,22 +13,30 @@ export default function permutate(
     throw new Error("Cannot permutate on empty array");
   }
 
-  if (
-    incomingOptions?.maxComputationLength &&
-    input.length >= incomingOptions?.maxComputationLength
-  ) {
-    throw new Error(
-      "Max combinations length cannot be smaller than given input"
-    );
+  if (incomingOptions) {
+    if (
+      typeof incomingOptions?.maxComputationLength === "number" &&
+      input.length > incomingOptions?.maxComputationLength
+    ) {
+      throw new Error(
+        "Max combinations length cannot be smaller than given input"
+      );
+    }
   }
 
   const replication = getReplication(incomingOptions?.replication);
+  const maxComputed = computeCombinationsLength(input, replication);
+
+  let maxCombinationsLength =
+    incomingOptions?.maxComputationLength || maxComputed;
+
+  if (maxCombinationsLength > maxComputed) {
+    maxCombinationsLength = maxComputed;
+  }
 
   const options: IPermutateOptions = {
     mode: incomingOptions?.mode || PermutateMode.default,
-    maxCombinationsLength:
-      incomingOptions?.maxComputationLength ||
-      computeCombinationsLength(input, replication),
+    maxCombinationsLength: maxCombinationsLength,
     replication
   };
 

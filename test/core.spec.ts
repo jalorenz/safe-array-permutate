@@ -1,5 +1,6 @@
 import permutate from "~lib/core";
 import { PermutateMode } from "~lib/interfaces";
+import * as utils from "~lib/utils";
 
 describe("permutate", () => {
   it("should throw Error if given input is empty array", () => {
@@ -14,20 +15,60 @@ describe("permutate", () => {
     ).toThrowError(Error);
   });
 
-  it("should return shuffled version of given input when mode is random", () => {
-    const firstIndexShuffled = [{ key: 1 }, { key: 2 }];
-    const secondIndexShuffled = [{ key: 2 }, { key: 1 }];
-    jest.mock("~lib/utils", () => ({
-      shuffle: jest
-        .fn()
-        .mockImplementationOnce(() => firstIndexShuffled)
-        .mockImplementationOnce(() => secondIndexShuffled)
-    }));
+  it.each([[{}], [undefined]])(
+    "should throw error if given max combinations length is undefined",
+    (options: any) => {
+      expect(() => permutate([{ key: 1 }, { key: 2 }], options)).toThrowError(
+        Error
+      );
+    }
+  );
 
-    const result = permutate([{ key: 1 }, { key: 2 }], {
-      mode: PermutateMode.random
-    });
+  it.each([[true], [false]])(
+    "should call getReplication with given replication parameter",
+    (replication: boolean) => {
+      const spy = jest.spyOn(utils, "getReplication");
 
-    expect(result).toEqual([...firstIndexShuffled, ...secondIndexShuffled]);
-  });
+      permutate([{ key: 1 }, { key: 2 }], {
+        mode: PermutateMode.random,
+        replication,
+        maxComputationLength: 10000
+      });
+
+      expect(spy).toBeCalledWith(replication);
+    }
+  );
+
+  it.each([
+    [[{ key: 1 }, { key: 2 }], 2],
+    [[{ key: 1 }, { key: 2 }, { key: 3 }], 8]
+  ])(
+    "should call shuffle with computed combinations length if maxComputationLength is not defined",
+    (input: any, expectedCalls: number) => {
+      const spy = jest.spyOn(utils, "shuffle");
+
+      permutate(input, {
+        mode: PermutateMode.random
+      });
+
+      expect(spy).toBeCalledTimes(expectedCalls);
+    }
+  );
+
+  it.each([
+    [[{ key: 1 }, { key: 2 }], 2],
+    [[{ key: 1 }, { key: 2 }, { key: 3 }], 8]
+  ])(
+    "should call shuffle as often as combinations are available",
+    (input: any[], expectedCalls: number) => {
+      const spy = jest.spyOn(utils, "shuffle");
+
+      permutate(input, {
+        mode: PermutateMode.random,
+        maxComputationLength: 10000
+      });
+
+      expect(spy).toBeCalledTimes(expectedCalls);
+    }
+  );
 });
