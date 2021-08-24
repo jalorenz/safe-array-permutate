@@ -9,3 +9,5 @@ env:
 script:
   - npm run test:coverage:ci
   - npm run build
+after_success:
+  - npm run semantic-release
