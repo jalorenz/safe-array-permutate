@@ -6,7 +6,7 @@
       "@semantic-release/changelog",
       ["@semantic-release/npm", { 
           "npmPublish": true,
-          "pkgRoot": "dist"
+          "tarballDir": "dist"
         }
       ],
       ["@semantic-release/git",
