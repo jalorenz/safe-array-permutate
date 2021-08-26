@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/jalorenz/safe-array-permutate/compare/v1.1.0...v1.2.0) (2021-08-26)
+
+
+### Features
+
+* changes error message if maxLength is given with zero ([2fc781c](https://github.com/jalorenz/safe-array-permutate/commit/2fc781c3bd4376e00c481a29bab644cfda21fe1d))
+
 # [1.1.0](https://github.com/jalorenz/safe-array-permutate/compare/v1.0.0...v1.1.0) (2021-08-26)
 
 
