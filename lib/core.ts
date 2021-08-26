@@ -1,3 +1,5 @@
-export default function permutate<T>(input: T[]) : T[] {
-    return input
+import { permutate } from "./utils";
+
+export default function safePermutate<T>(input: T[]) : T[][] {
+    return permutate(input)
 }
