@@ -6,7 +6,7 @@
 
 This package provides a safe way to generate permutations for a given input.
 
-```
+```js
 const input = [1, 2]
 
 const result = safePermutate(input)
