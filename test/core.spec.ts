@@ -11,7 +11,7 @@ describe("Core", () => {
         expect(result).toEqual([input])
     })
 
-    it("should return the permutation without repetition", () => {
+    it("should return the full permutation without repetition", () => {
         const input = [1, 2]
 
         const result = safePermutate(input)
@@ -26,5 +26,16 @@ describe("Core", () => {
         const input = [1, 2]
 
         expect(() => safePermutate(input, options)).toThrowError(InvalidMaxLengthError)
+    })
+
+    it("should return the permutation limited by given maxLength", () => {
+        const options: PermutationOptions = {
+            maxLength: 1
+        }
+        const input = [1, 2]
+
+        const result = safePermutate(input, options)
+
+        expect(result).toHaveLength(1)
     })
 })
