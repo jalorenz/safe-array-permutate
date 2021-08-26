@@ -1,5 +1,5 @@
 export class InvalidMaxLengthError extends Error {
     constructor() {
-        super("Given maxLength is zero")
+        super("Given maxLength can not be zero")
     }
 }
