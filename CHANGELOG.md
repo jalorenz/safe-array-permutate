@@ -1,3 +1,10 @@
+# [1.3.0](https://github.com/jalorenz/safe-array-permutate/compare/v1.2.0...v1.3.0) (2021-08-26)
+
+
+### Features
+
+* changes error text ([c1e372b](https://github.com/jalorenz/safe-array-permutate/commit/c1e372b2f34ac1accebe949f13f8adf7b361c27d))
+
 # [1.2.0](https://github.com/jalorenz/safe-array-permutate/compare/v1.1.0...v1.2.0) (2021-08-26)
 
 
