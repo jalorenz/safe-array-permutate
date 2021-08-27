@@ -1,3 +1,11 @@
+# [1.4.0](https://github.com/jalorenz/safe-array-permutate/compare/v1.3.0...v1.4.0) (2021-08-27)
+
+
+### Features
+
+* adds typescript definitions ([4c310b6](https://github.com/jalorenz/safe-array-permutate/commit/4c310b6aa7c6c4e24ab97211054f8c4b09ec95d8))
+* adds work in progress warning ([467a95b](https://github.com/jalorenz/safe-array-permutate/commit/467a95b2afdc746ff2c203f9f822ce667ca88ead))
+
 # [1.3.0](https://github.com/jalorenz/safe-array-permutate/compare/v1.2.0...v1.3.0) (2021-08-26)
 
 
