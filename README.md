@@ -4,6 +4,8 @@
 [![Coverage Status](https://coveralls.io/repos/github/jalorenz/safe-array-permutate/badge.svg?branch=main)](https://coveralls.io/github/jalorenz/safe-array-permutate?branch=main)
 ![npm](https://img.shields.io/npm/dt/safe-array-permutate)
 
+:exclamation: WORK IN PROGRESS, not usable!
+
 This package provides a safe way to generate permutations for a given input.
 
 ```js
