@@ -1,6 +1,6 @@
-import { PermutationOptions } from "~lib/contracts"
-import safePermutate from "~lib/core"
-import { InvalidMaxLengthError } from "~lib/errors"
+import { PermutationOptions } from "../lib/contracts"
+import safePermutate from "../lib/core"
+import { InvalidMaxLengthError } from "../lib/errors"
 
 describe("Core", () => {
     it("should return the given input if input length is 1", () => {
