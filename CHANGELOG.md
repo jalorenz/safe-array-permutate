@@ -1,3 +1,10 @@
+# [1.6.0](https://github.com/jalorenz/safe-array-permutate/compare/v1.5.0...v1.6.0) (2021-08-31)
+
+
+### Features
+
+* changes safePermutate to not being default exported ([d4fd313](https://github.com/jalorenz/safe-array-permutate/commit/d4fd3135a919c706ea03d7d554e53699bcb52694))
+
 # [1.5.0](https://github.com/jalorenz/safe-array-permutate/compare/v1.4.0...v1.5.0) (2021-08-29)
 
 
