@@ -1,41 +1,41 @@
-import { PermutationOptions } from "../lib/contracts"
-import { safePermutate } from "../lib/core"
-import { InvalidMaxLengthError } from "../lib/errors"
+import { PermutationOptions } from '../lib/contracts';
+import { safePermutate } from '../lib/core';
+import { InvalidMaxLengthError } from '../lib/errors';
 
-describe("Core", () => {
-    it("should return the given input if input length is 1", () => {
-        const input = [1]
-        
-        const result = safePermutate(input)
+describe('Core', () => {
+  it('should return the given input if input length is 1', () => {
+    const input = [1];
 
-        expect(result).toEqual([input])
-    })
+    const result = safePermutate(input);
 
-    it("should return the full permutation without repetition", () => {
-        const input = [1, 2]
+    expect(result).toEqual([input]);
+  });
 
-        const result = safePermutate(input)
+  it('should return the full permutation without repetition', () => {
+    const input = [1, 2];
 
-        expect(result).toEqual([[1, 2], [2, 1]])
-    })
+    const result = safePermutate(input);
 
-    it("should throw InvalidMaxLengthError if given maxLength is 0", () => {
-        const options: PermutationOptions = {
-            maxLength: 0
-        }
-        const input = [1, 2]
+    expect(result).toEqual([[1, 2], [2, 1]]);
+  });
 
-        expect(() => safePermutate(input, options)).toThrowError(InvalidMaxLengthError)
-    })
+  it('should throw InvalidMaxLengthError if given maxLength is 0', () => {
+    const options: PermutationOptions = {
+      maxLength: 0,
+    };
+    const input = [1, 2];
 
-    it.skip("should return the permutation limited by given maxLength", () => {
-        const options: PermutationOptions = {
-            maxLength: 1
-        }
-        const input = [1, 2]
+    expect(() => safePermutate(input, options)).toThrowError(InvalidMaxLengthError);
+  });
 
-        const result = safePermutate(input, options)
+  it.skip('should return the permutation limited by given maxLength', () => {
+    const options: PermutationOptions = {
+      maxLength: 1,
+    };
+    const input = [1, 2];
 
-        expect(result).toHaveLength(1)
-    })
-})
+    const result = safePermutate(input, options);
+
+    expect(result).toHaveLength(1);
+  });
+});
