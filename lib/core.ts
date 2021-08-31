@@ -1,5 +1,5 @@
-import { permutate } from "./utils";
+import { permutate } from './utils';
 
 export function safePermutate<T>(input: T[]) : T[][] {
-    return permutate(input)
+  return permutate(input);
 }

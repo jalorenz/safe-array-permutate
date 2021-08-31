@@ -1,19 +1,19 @@
-import { safePermutate } from "../lib/core"
+import { safePermutate } from '../lib/core';
 
-describe("Core", () => {
-    it("should return the given input if input length is 1", () => {
-        const input = [1]
-        
-        const result = safePermutate(input)
+describe('Core', () => {
+  it('should return the given input if input length is 1', () => {
+    const input = [1];
 
-        expect(result).toEqual([input])
-    })
+    const result = safePermutate(input);
 
-    it("should return the full permutation without repetition", () => {
-        const input = [1, 2]
+    expect(result).toEqual([input]);
+  });
 
-        const result = safePermutate(input)
+  it('should return the full permutation without repetition', () => {
+    const input = [1, 2];
 
-        expect(result).toEqual([[1, 2], [2, 1]])
-    })
-})
+    const result = safePermutate(input);
+
+    expect(result).toEqual([[1, 2], [2, 1]]);
+  });
+});
