@@ -2,7 +2,7 @@ import { PermutationOptions } from "./contracts";
 import { InvalidMaxLengthError } from "./errors";
 import { permutate } from "./utils";
 
-export default function safePermutate<T>(input: T[], options?: PermutationOptions) : T[][] {
+export function safePermutate<T>(input: T[], options?: PermutationOptions) : T[][] {
     const opts: PermutationOptions = {
         maxLength: options?.maxLength ?? Infinity,
     }

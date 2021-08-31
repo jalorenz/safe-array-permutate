@@ -1,5 +1,5 @@
 import { PermutationOptions } from "../lib/contracts"
-import safePermutate from "../lib/core"
+import { safePermutate } from "../lib/core"
 import { InvalidMaxLengthError } from "../lib/errors"
 
 describe("Core", () => {
