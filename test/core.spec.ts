@@ -1,19 +1,16 @@
 import { safePermutate } from '../lib/core';
+import * as utils from '../lib/utils';
+
+jest.mock('../lib/utils', () => ({
+  permutate: jest.fn(),
+}));
 
 describe('Core', () => {
-  it('should return the given input if input length is 1', () => {
-    const input = [1];
-
-    const result = safePermutate(input);
-
-    expect(result).toEqual([input]);
-  });
-
-  it('should return the full permutation without repetition', () => {
+  it('should call permutate util function with input', () => {
     const input = [1, 2];
 
-    const result = safePermutate(input);
+    safePermutate(input);
 
-    expect(result).toEqual([[1, 2], [2, 1]]);
+    expect(utils.permutate).toHaveBeenCalledWith(input);
   });
 });
