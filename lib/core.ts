@@ -1,12 +1,12 @@
-import { permutate } from './utils';
-import { IPermutateOptions } from './contracts';
+import { permutate } from "./utils";
+import { IPermutateOptions } from "./contracts";
 
 export function safePermutate<T>(
   input: T[],
-  options?: IPermutateOptions,
+  options?: IPermutateOptions
 ): T[][] {
   const opts: IPermutateOptions = {
-    returnDuplicates: options?.returnDuplicates || false,
+    returnDuplicates: options?.returnDuplicates || false
   };
 
   return permutate(input, opts);
