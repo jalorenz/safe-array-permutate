@@ -21,4 +21,16 @@ describe("Utils", () => {
       [2, 1]
     ]);
   });
+
+  it.skip("should return permutations without repetition if input has duplicates but returning of duplicates is disabled", () => {
+    const input = [1, 1, 2],
+      options = { returnDuplicates: false };
+
+    const result = permutate(input, options);
+
+    expect(result).toEqual([
+      [1, 2],
+      [2, 1]
+    ]);
+  });
 });
