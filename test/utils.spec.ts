@@ -14,6 +14,9 @@ describe('Utils', () => {
 
     const result = permutate(input);
 
-    expect(result).toEqual([[1, 2], [2, 1]]);
+    expect(result).toEqual([
+      [1, 2],
+      [2, 1],
+    ]);
   });
 });
