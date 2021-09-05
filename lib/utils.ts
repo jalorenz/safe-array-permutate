@@ -1,7 +1,7 @@
 // https://stackoverflow.com/questions/9960908/permutations-in-javascript/37580979#37580979
-import { IPermutateOptions } from './contracts';
+import { IPermutateOptions } from "./contracts";
 
-export function permutate<T>(input: T[], options?: IPermutateOptions): T[][] {
+export function permutate<T>(input: T[], options: IPermutateOptions): T[][] {
   const { length } = input;
   const result = [input.slice()];
   const c = new Array(length).fill(0);

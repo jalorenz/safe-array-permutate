@@ -1,22 +1,24 @@
-import { permutate } from '../lib/utils';
+import { permutate } from "../lib/utils";
 
-describe('Utils', () => {
-  it('should return the given input if input length is 1', () => {
-    const input = [1];
+describe("Utils", () => {
+  it("should return the given input if input length is 1", () => {
+    const input = [1],
+      options = { returnDuplicates: true };
 
-    const result = permutate(input);
+    const result = permutate(input, options);
 
     expect(result).toEqual([input]);
   });
 
-  it('should return the full permutation without repetition', () => {
-    const input = [1, 2];
+  it("should return the full permutation without repetition if input has no duplicates", () => {
+    const input = [1, 2],
+      options = { returnDuplicates: false };
 
-    const result = permutate(input);
+    const result = permutate(input, options);
 
     expect(result).toEqual([
       [1, 2],
-      [2, 1],
+      [2, 1]
     ]);
   });
 });
