@@ -15,7 +15,7 @@ const result = safePermutate(input)
 
 console.log(result) // [[1, 2], [2, 1]]
 ```
-##Options
+## Options
 
 Additional options to configure the permutation of the given input can be provided via a second, optional parameter when calling the ```safePermutate``` function.
 
