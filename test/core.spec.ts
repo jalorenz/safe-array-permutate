@@ -40,7 +40,7 @@ describe('Core', () => {
   it.each([
     [10],
     [100],
-    [1000]
+    [1000],
   ])('should call permutate function with given input and given option parameter: %s for the max. length of returned entries', (maxResultEntries: number) => {
     const input = [1, 2];
     const options: IPermutateOptions = {
@@ -51,5 +51,5 @@ describe('Core', () => {
     safePermutate(input, options);
 
     expect(utils.permutate).toHaveBeenCalledWith(input, options);
-  })
+  });
 });
