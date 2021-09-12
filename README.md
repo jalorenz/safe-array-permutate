@@ -22,8 +22,11 @@ Additional options to configure the permutation of the given input can be provid
 ```ts
 interface IPermutateOptions {
   // controls whether duplicates in input should result 
-  // in duplicate result entries (for example: input = [1, 1, 2])
-  returnDuplicates?: boolean, 
+  // in duplicate result entries (for example: input = [1, 1, 2]). (Default: false)
+  returnDuplicates?: boolean,
+  // specifies the maximum number of returned entries from the permutation,
+  // idependently from the given input. (Default: Infinity)
+  maxResultEntries?: number
 }
 ```
 
