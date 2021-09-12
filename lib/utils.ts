@@ -1,4 +1,3 @@
-// https://stackoverflow.com/questions/9960908/permutations-in-javascript/37580979#37580979
 // https://levelup.gitconnected.com/find-all-permutations-of-a-string-in-javascript-af41bfe072d2
 import { IPermutateOptions } from "./contracts";
 
