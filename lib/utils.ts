@@ -1,11 +1,15 @@
 // https://levelup.gitconnected.com/find-all-permutations-of-a-string-in-javascript-af41bfe072d2
-import { IPermutateOptions } from './contracts';
+import { InvalidMaxResultEntriesOptionError, IPermutateOptions } from "./contracts";
 
 export function permutate<T>(input: T[], options: IPermutateOptions): T[][] {
   const result: T[][] = [];
 
   if (input.length < 2) {
     return [input];
+  }
+
+  if(options.maxResultEntries === 0) {
+    throw new InvalidMaxResultEntriesOptionError(options.maxResultEntries)
   }
 
   if (!options.returnDuplicates) {

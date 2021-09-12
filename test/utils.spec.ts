@@ -1,5 +1,5 @@
-import { permutate } from '../lib/utils';
-import { IPermutateOptions } from '../lib';
+import { permutate } from "../lib/utils";
+import { CutOffLogLevel, CutOffStrategy, InvalidMaxResultEntriesOptionError, IPermutateOptions } from "../lib";
 
 describe('Utils', () => {
   it.each([[false], [true]])(
@@ -78,4 +78,34 @@ describe('Utils', () => {
 
     expect(result).toEqual([[1]]);
   });
+
+  it('should throw InvalidMaxResultEntriesOptionError if given maxResultEntries option is 0', () => {
+    const input = [1, 2];
+    const options: IPermutateOptions = {
+      returnDuplicates: false,
+      maxResultEntries: 0,
+    };
+
+    expect(() => permutate(input, options)).toThrow(InvalidMaxResultEntriesOptionError)
+  })
+
+  it.skip('should return all computed permutations in linear order until given limit is exceeded', () => {
+    const input = [1, 2, 3];
+    const options: IPermutateOptions = {
+      returnDuplicates: false,
+      maxResultEntries: 5,
+      cutOffStrategy: CutOffStrategy.linear,
+      cutOffLogLevel: CutOffLogLevel.warn,
+    };
+
+    const result = permutate(input, options)
+
+    expect(result).toEqual([
+      [1, 2, 3],
+      [1, 3, 2],
+      [2, 1, 3],
+      [2, 3, 1],
+      [3, 1, 2],
+    ])
+  })
 });

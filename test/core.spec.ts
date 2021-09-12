@@ -1,4 +1,10 @@
-import { CutOffLogLevel, CutOffStrategy, IPermutateOptions, safePermutate } from "../lib";
+import {
+  CutOffLogLevel,
+  CutOffStrategy,
+  InvalidMaxResultEntriesOptionError,
+  IPermutateOptions,
+  safePermutate
+} from "../lib";
 import * as utils from "../lib/utils";
 
 jest.mock('../lib/utils', () => ({

@@ -15,3 +15,9 @@ export interface IPermutateOptions {
   cutOffStrategy?: CutOffStrategy
   cutOffLogLevel?: CutOffLogLevel
 }
+
+export class InvalidMaxResultEntriesOptionError extends Error {
+  constructor(input: number) {
+    super("Given input %d for option 'maxResultEntries' is smaller than then length of input");
+  }
+}
