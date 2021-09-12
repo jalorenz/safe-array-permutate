@@ -1,3 +1,11 @@
+# [1.7.0](https://github.com/jalorenz/safe-array-permutate/compare/v1.6.0...v1.7.0) (2021-09-12)
+
+
+### Features
+
+* **contracts:** adds IPermutateOptions ([1be2341](https://github.com/jalorenz/safe-array-permutate/commit/1be234179d9f1eb0a0515182a650701431345a7a))
+* **utils:** adds recognization of returnDuplicates option ([b784b7d](https://github.com/jalorenz/safe-array-permutate/commit/b784b7d3dbe436557c9b0f07c05a0525cf26265b))
+
 # [1.6.0](https://github.com/jalorenz/safe-array-permutate/compare/v1.5.0...v1.6.0) (2021-08-31)
 
 
