@@ -15,3 +15,15 @@ const result = safePermutate(input)
 
 console.log(result) // [[1, 2], [2, 1]]
 ```
+##Options
+
+Additional options to configure the permutation of the given input can be provided via a second, optional parameter when calling the ```safePermutate``` function.
+
+```ts
+interface IPermutateOptions {
+  // controls whether duplicates in input should result 
+  // in duplicate result entries (for example: input = [1, 1, 2])
+  returnDuplicates?: boolean, 
+}
+```
+

@@ -22,14 +22,17 @@ describe("Core", () => {
     expect(utils.permutate).toHaveBeenCalledWith(input, defaultOptions);
   });
 
-  it("should call permutate util function with given input and options", () => {
-    const input = [1, 2];
-    const options: IPermutateOptions = {
-      returnDuplicates: true
-    };
+  it.each([[false], [true]])(
+    "should call permutate util function with given input and options",
+    (returnDuplicates: boolean) => {
+      const input = [1, 2];
+      const options: IPermutateOptions = {
+        returnDuplicates
+      };
 
-    safePermutate(input, options);
+      safePermutate(input, options);
 
-    expect(utils.permutate).toHaveBeenCalledWith(input, options);
-  });
+      expect(utils.permutate).toHaveBeenCalledWith(input, options);
+    }
+  );
 });

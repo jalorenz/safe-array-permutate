@@ -8,6 +8,10 @@ export function permutate<T>(input: T[], options: IPermutateOptions): T[][] {
     return [input];
   }
 
+  if (!options.returnDuplicates) {
+    input = input.filter((value, index, self) => self.indexOf(value) === index);
+  }
+
   for (let i = 0; i < input.length; i++) {
     const entry = input[i];
     const remaining = input
