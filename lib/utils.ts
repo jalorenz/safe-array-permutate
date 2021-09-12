@@ -25,6 +25,10 @@ export function permutate<T>(input: T[], options: IPermutateOptions): T[][] {
     const permutations = permutate(remaining, options);
     /* eslint-disable */
     for (let j = 0; j < permutations.length; j++) {
+      if(!!options.maxResultEntries && result.length >= options.maxResultEntries) {
+        break;
+      }
+
       result.push([entry].concat(permutations[j]));
     }
   }
