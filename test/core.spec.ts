@@ -1,19 +1,37 @@
-import { safePermutate } from '../lib/core';
+import { safePermutate, IPermutateOptions } from '../lib';
+import * as utils from '../lib/utils';
+
+jest.mock('../lib/utils', () => ({
+  permutate: jest.fn(),
+}));
 
 describe('Core', () => {
-  it('should return the given input if input length is 1', () => {
-    const input = [1];
-
-    const result = safePermutate(input);
-
-    expect(result).toEqual([input]);
+  beforeEach(() => {
+    jest.resetAllMocks();
   });
 
-  it('should return the full permutation without repetition', () => {
+  it('should call permutate util function with given input and default options, if no options are given', () => {
     const input = [1, 2];
+    const defaultOptions: IPermutateOptions = {
+      returnDuplicates: false,
+    };
 
-    const result = safePermutate(input);
+    safePermutate(input);
 
-    expect(result).toEqual([[1, 2], [2, 1]]);
+    expect(utils.permutate).toHaveBeenCalledWith(input, defaultOptions);
   });
+
+  it.each([[false], [true]])(
+    'should call permutate util function with given input and options',
+    (returnDuplicates: boolean) => {
+      const input = [1, 2];
+      const options: IPermutateOptions = {
+        returnDuplicates,
+      };
+
+      safePermutate(input, options);
+
+      expect(utils.permutate).toHaveBeenCalledWith(input, options);
+    },
+  );
 });

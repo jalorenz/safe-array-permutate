@@ -1,24 +1,27 @@
-// https://stackoverflow.com/questions/9960908/permutations-in-javascript/37580979#37580979
-export function permutate<T>(input: T[]) : T[][] {
-  const { length } = input;
-  const result = [input.slice()];
-  const c = new Array(length).fill(0);
-  let i = 1;
-  let k;
-  let p;
+// https://levelup.gitconnected.com/find-all-permutations-of-a-string-in-javascript-af41bfe072d2
+import { IPermutateOptions } from './contracts';
 
-  while (i < length) {
-    if (c[i] < i) {
-      k = i % 2 && c[i];
-      p = input[i];
-      input[i] = input[k];
-      input[k] = p;
-      c[i] += 1;
-      i = 1;
-      result.push(input.slice());
-    } else {
-      c[i] = 0;
-      i += 1;
+export function permutate<T>(input: T[], options: IPermutateOptions): T[][] {
+  const result: T[][] = [];
+
+  if (input.length < 2) {
+    return [input];
+  }
+
+  if (!options.returnDuplicates) {
+    input = input.filter((value, index, self) => self.indexOf(value) === index);
+  }
+  /* eslint-disable */
+  for (let i = 0; i < input.length; i++) {
+    const entry = input[i];
+    const remaining = input
+      .slice(0, i)
+      .concat(input.slice(i + 1, input.length));
+
+    const permutations = permutate(remaining, options);
+    /* eslint-disable */
+    for (let j = 0; j < permutations.length; j++) {
+      result.push([entry].concat(permutations[j]));
     }
   }
 
