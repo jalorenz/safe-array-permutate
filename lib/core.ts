@@ -7,6 +7,7 @@ export function safePermutate<T>(
 ): T[][] {
   const opts: IPermutateOptions = {
     returnDuplicates: options?.returnDuplicates || false,
+    maxResultEntries: options?.maxResultEntries || Infinity,
   };
 
   return permutate(input, opts);

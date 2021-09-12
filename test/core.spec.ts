@@ -14,6 +14,7 @@ describe('Core', () => {
     const input = [1, 2];
     const defaultOptions: IPermutateOptions = {
       returnDuplicates: false,
+      maxResultEntries: Infinity,
     };
 
     safePermutate(input);
@@ -22,11 +23,12 @@ describe('Core', () => {
   });
 
   it.each([[false], [true]])(
-    'should call permutate util function with given input and options',
+    'should call permutate util function with given input and given option parameter: %s for returning of duplicates',
     (returnDuplicates: boolean) => {
       const input = [1, 2];
       const options: IPermutateOptions = {
         returnDuplicates,
+        maxResultEntries: Infinity,
       };
 
       safePermutate(input, options);
@@ -34,4 +36,20 @@ describe('Core', () => {
       expect(utils.permutate).toHaveBeenCalledWith(input, options);
     },
   );
+
+  it.each([
+    [10],
+    [100],
+    [1000]
+  ])('should call permutate function with given input and given option parameter: %s for the max. length of returned entries', (maxResultEntries: number) => {
+    const input = [1, 2];
+    const options: IPermutateOptions = {
+      maxResultEntries,
+      returnDuplicates: false,
+    };
+
+    safePermutate(input, options);
+
+    expect(utils.permutate).toHaveBeenCalledWith(input, options);
+  })
 });
