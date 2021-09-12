@@ -1,20 +1,19 @@
-import { safePermutate } from "../lib";
-import * as utils from "../lib/utils";
-import { IPermutateOptions } from "../lib";
+import { safePermutate, IPermutateOptions } from '../lib';
+import * as utils from '../lib/utils';
 
-jest.mock("../lib/utils", () => ({
-  permutate: jest.fn()
+jest.mock('../lib/utils', () => ({
+  permutate: jest.fn(),
 }));
 
-describe("Core", () => {
+describe('Core', () => {
   beforeEach(() => {
     jest.resetAllMocks();
   });
 
-  it("should call permutate util function with given input and default options, if no options are given", () => {
+  it('should call permutate util function with given input and default options, if no options are given', () => {
     const input = [1, 2];
     const defaultOptions: IPermutateOptions = {
-      returnDuplicates: false
+      returnDuplicates: false,
     };
 
     safePermutate(input);
@@ -23,16 +22,16 @@ describe("Core", () => {
   });
 
   it.each([[false], [true]])(
-    "should call permutate util function with given input and options",
+    'should call permutate util function with given input and options',
     (returnDuplicates: boolean) => {
       const input = [1, 2];
       const options: IPermutateOptions = {
-        returnDuplicates
+        returnDuplicates,
       };
 
       safePermutate(input, options);
 
       expect(utils.permutate).toHaveBeenCalledWith(input, options);
-    }
+    },
   );
 });
