@@ -1,5 +1,5 @@
-import { safePermutate, IPermutateOptions } from '../lib';
-import * as utils from '../lib/utils';
+import { CutOffLogLevel, CutOffStrategy, IPermutateOptions, safePermutate } from "../lib";
+import * as utils from "../lib/utils";
 
 jest.mock('../lib/utils', () => ({
   permutate: jest.fn(),
@@ -15,6 +15,8 @@ describe('Core', () => {
     const defaultOptions: IPermutateOptions = {
       returnDuplicates: false,
       maxResultEntries: Infinity,
+      cutOffStrategy: CutOffStrategy.linear,
+      cutOffLogLevel: CutOffLogLevel.warn,
     };
 
     safePermutate(input);
@@ -29,6 +31,8 @@ describe('Core', () => {
       const options: IPermutateOptions = {
         returnDuplicates,
         maxResultEntries: Infinity,
+        cutOffStrategy: CutOffStrategy.linear,
+        cutOffLogLevel: CutOffLogLevel.warn,
       };
 
       safePermutate(input, options);
@@ -46,6 +50,8 @@ describe('Core', () => {
     const options: IPermutateOptions = {
       maxResultEntries,
       returnDuplicates: false,
+      cutOffStrategy: CutOffStrategy.linear,
+      cutOffLogLevel: CutOffLogLevel.warn,
     };
 
     safePermutate(input, options);
