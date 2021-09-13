@@ -1,10 +1,5 @@
-import {
-  CutOffLogLevel,
-  CutOffStrategy,
-  IPermutateOptions,
-  safePermutate,
-} from '../lib';
-import * as utils from '../lib/utils';
+import { CutOffLogLevel, CutOffStrategy, IPermutateOptions, safePermutate } from "../lib";
+import * as utils from "../lib/utils";
 
 jest.mock('../lib/utils', () => ({
   permutate: jest.fn(),
@@ -74,6 +69,24 @@ describe('Core', () => {
       returnDuplicates: false,
       cutOffStrategy,
       cutOffLogLevel: CutOffLogLevel.warn,
+    };
+
+    safePermutate(input, options);
+
+    expect(utils.permutate).toHaveBeenCalledWith(input, options);
+  })
+
+  it.each([
+    [CutOffLogLevel.off],
+    [CutOffLogLevel.warn],
+    [CutOffLogLevel.error]
+  ])('should call permutate function with given option parameter: %s for cut off log level', (cutOffLogLevel: CutOffLogLevel) => {
+    const input = [1, 2];
+    const options: IPermutateOptions = {
+      maxResultEntries: Infinity,
+      returnDuplicates: false,
+      cutOffStrategy: CutOffStrategy.linear,
+      cutOffLogLevel,
     };
 
     safePermutate(input, options);
