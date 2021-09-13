@@ -22,5 +22,6 @@ module.exports = {
     'import/prefer-default-export': 0,
     'no-param-reassign': 0,
     'import/namespace': 0,
+    'no-shadow': 0,
   },
 };
