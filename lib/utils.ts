@@ -1,5 +1,5 @@
 // https://levelup.gitconnected.com/find-all-permutations-of-a-string-in-javascript-af41bfe072d2
-import { InvalidMaxResultEntriesOptionError, IPermutateOptions } from './contracts';
+import { CutOffLogLevel, InvalidMaxResultEntriesOptionError, IPermutateOptions } from './contracts';
 
 export function permutate<T>(input: T[], options: IPermutateOptions): T[][] {
   const result: T[][] = [];
@@ -27,7 +27,13 @@ export function permutate<T>(input: T[], options: IPermutateOptions): T[][] {
     /* eslint-disable */
     for (let j = 0; j < permutations.length; j++) {
       if(!!options.maxResultEntries && result.length >= options.maxResultEntries) {
-        break;
+        if(options.cutOffLogLevel) {
+          if(options.cutOffLogLevel === CutOffLogLevel.warn) {
+            console.warn(`Configured limit of ${options.maxResultEntries} is reached!`)
+          }
+
+          break;
+        }
       }
 
       result.push([entry].concat(permutations[j]));

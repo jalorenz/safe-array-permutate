@@ -101,11 +101,26 @@ describe('Utils', () => {
       returnDuplicates: false,
       maxResultEntries,
       cutOffStrategy: CutOffStrategy.linear,
-      cutOffLogLevel: CutOffLogLevel.warn,
+      cutOffLogLevel: CutOffLogLevel.off,
     };
 
     const result = permutate(input, options);
 
     expect(result).toHaveLength(maxResultEntries);
+  });
+
+  it('should call console.warn if log level is warn and entries gets cut off', () => {
+    const consoleWarnSpy = jest.spyOn(global.console, 'warn').mockImplementation(() => {});
+    const input = [1, 2, 3];
+    const options: IPermutateOptions = {
+      returnDuplicates: false,
+      maxResultEntries: 5,
+      cutOffStrategy: CutOffStrategy.linear,
+      cutOffLogLevel: CutOffLogLevel.warn,
+    };
+
+    permutate(input, options);
+
+    expect(consoleWarnSpy).toHaveBeenCalled();
   });
 });
