@@ -1,5 +1,5 @@
 import { permutate } from './utils';
-import { IPermutateOptions } from './contracts';
+import { CutOffLogLevel, CutOffStrategy, IPermutateOptions } from './contracts';
 
 export function safePermutate<T>(
   input: T[],
@@ -7,6 +7,9 @@ export function safePermutate<T>(
 ): T[][] {
   const opts: IPermutateOptions = {
     returnDuplicates: options?.returnDuplicates || false,
+    maxResultEntries: options?.maxResultEntries || Infinity,
+    cutOffStrategy: options?.cutOffStrategy || CutOffStrategy.linear,
+    cutOffLogLevel: options?.cutOffLogLevel || CutOffLogLevel.warn,
   };
 
   return permutate(input, opts);

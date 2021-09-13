@@ -1,4 +1,6 @@
-import { safePermutate, IPermutateOptions } from '../lib';
+import {
+  CutOffLogLevel, CutOffStrategy, IPermutateOptions, safePermutate,
+} from '../lib';
 import * as utils from '../lib/utils';
 
 jest.mock('../lib/utils', () => ({
@@ -10,10 +12,13 @@ describe('Core', () => {
     jest.resetAllMocks();
   });
 
-  it('should call permutate util function with given input and default options, if no options are given', () => {
+  it('should call permutate function with default options', () => {
     const input = [1, 2];
     const defaultOptions: IPermutateOptions = {
       returnDuplicates: false,
+      maxResultEntries: Infinity,
+      cutOffStrategy: CutOffStrategy.linear,
+      cutOffLogLevel: CutOffLogLevel.warn,
     };
 
     safePermutate(input);
@@ -22,11 +27,14 @@ describe('Core', () => {
   });
 
   it.each([[false], [true]])(
-    'should call permutate util function with given input and options',
+    'should call permutate function with given option parameter: %s for returning of duplicates',
     (returnDuplicates: boolean) => {
       const input = [1, 2];
       const options: IPermutateOptions = {
         returnDuplicates,
+        maxResultEntries: Infinity,
+        cutOffStrategy: CutOffStrategy.linear,
+        cutOffLogLevel: CutOffLogLevel.warn,
       };
 
       safePermutate(input, options);
@@ -34,4 +42,55 @@ describe('Core', () => {
       expect(utils.permutate).toHaveBeenCalledWith(input, options);
     },
   );
+
+  it.each([
+    [10],
+    [100],
+    [1000],
+  ])('should call permutate function with given option parameter: %s for the max. length of returned entries', (maxResultEntries: number) => {
+    const input = [1, 2];
+    const options: IPermutateOptions = {
+      maxResultEntries,
+      returnDuplicates: false,
+      cutOffStrategy: CutOffStrategy.linear,
+      cutOffLogLevel: CutOffLogLevel.warn,
+    };
+
+    safePermutate(input, options);
+
+    expect(utils.permutate).toHaveBeenCalledWith(input, options);
+  });
+
+  it.each([
+    [CutOffStrategy.linear],
+  ])('should call permutate function with given option parameter: %s for cut off strategy', (cutOffStrategy: CutOffStrategy) => {
+    const input = [1, 2];
+    const options: IPermutateOptions = {
+      maxResultEntries: Infinity,
+      returnDuplicates: false,
+      cutOffStrategy,
+      cutOffLogLevel: CutOffLogLevel.warn,
+    };
+
+    safePermutate(input, options);
+
+    expect(utils.permutate).toHaveBeenCalledWith(input, options);
+  });
+
+  it.each([
+    [CutOffLogLevel.off],
+    [CutOffLogLevel.warn],
+  ])('should call permutate function with given option parameter: %s for cut off log level', (cutOffLogLevel: CutOffLogLevel) => {
+    const input = [1, 2];
+    const options: IPermutateOptions = {
+      maxResultEntries: Infinity,
+      returnDuplicates: false,
+      cutOffStrategy: CutOffStrategy.linear,
+      cutOffLogLevel,
+    };
+
+    safePermutate(input, options);
+
+    expect(utils.permutate).toHaveBeenCalledWith(input, options);
+  });
 });
