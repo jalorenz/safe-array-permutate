@@ -1,6 +1,5 @@
 export enum CutOffStrategy {
   linear = 'linear',
-  random = 'random'
 }
 
 export enum CutOffLogLevel {
