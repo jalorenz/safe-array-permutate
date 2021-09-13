@@ -15,7 +15,7 @@ describe('Core', () => {
     jest.resetAllMocks();
   });
 
-  it('should call permutate util function with given input and default options, if no options are given', () => {
+  it('should call permutate function with default options', () => {
     const input = [1, 2];
     const defaultOptions: IPermutateOptions = {
       returnDuplicates: false,
@@ -30,7 +30,7 @@ describe('Core', () => {
   });
 
   it.each([[false], [true]])(
-    'should call permutate util function with given input and given option parameter: %s for returning of duplicates',
+    'should call permutate function with given option parameter: %s for returning of duplicates',
     (returnDuplicates: boolean) => {
       const input = [1, 2];
       const options: IPermutateOptions = {
@@ -50,7 +50,7 @@ describe('Core', () => {
     [10],
     [100],
     [1000],
-  ])('should call permutate function with given input and given option parameter: %s for the max. length of returned entries', (maxResultEntries: number) => {
+  ])('should call permutate function with given option parameter: %s for the max. length of returned entries', (maxResultEntries: number) => {
     const input = [1, 2];
     const options: IPermutateOptions = {
       maxResultEntries,
