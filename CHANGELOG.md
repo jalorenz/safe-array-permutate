@@ -1,3 +1,14 @@
+# [1.8.0](https://github.com/jalorenz/safe-array-permutate/compare/v1.7.0...v1.8.0) (2021-09-13)
+
+
+### Features
+
+* **contracts:** adds cut-off strategy and log level ([e947350](https://github.com/jalorenz/safe-array-permutate/commit/e947350998e217adaf86058a369f02c8693ace15))
+* **contracts:** removes cut off strategy: random ([accb7c7](https://github.com/jalorenz/safe-array-permutate/commit/accb7c7ed326e8c794e6a9bcefd6c52d739b53ae))
+* **contracts:** removes log level error ([b350d00](https://github.com/jalorenz/safe-array-permutate/commit/b350d00b13b832ba252d2c6f1120911701bda247))
+* **core:** adds maxResultEntries to options ([6601410](https://github.com/jalorenz/safe-array-permutate/commit/66014107e70aed048b5c3da834d8fc33d8a43cb4))
+* **utils:** adds recognization of option: maxResultEntries ([d824b0e](https://github.com/jalorenz/safe-array-permutate/commit/d824b0e8a81f3ae34c3ec8e06f7c9ba88b1a61f1))
+
 # [1.7.0](https://github.com/jalorenz/safe-array-permutate/compare/v1.6.0...v1.7.0) (2021-09-12)
 
 
