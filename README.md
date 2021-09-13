@@ -7,9 +7,12 @@ This package provides a safe way to generate permutations for a given input.
 ![npm](https://img.shields.io/npm/dt/safe-array-permutate)
 
 ```ts
-import { safePermutate } from "safe-array-permutate"
+import { safePermutate, IPermutateOptions } from "safe-array-permutate"
 
 const input = [1, 2]
+const options: IPermutateOptions = {
+  returnDuplicates: false,
+}
 
 const result = safePermutate(input)
 
@@ -20,13 +23,28 @@ console.log(result) // [[1, 2], [2, 1]]
 Additional options to configure the permutation of the given input can be provided via a second, optional parameter when calling the ```safePermutate``` function.
 
 ```ts
+enum CutOffStrategy {
+  linear = 'linear',
+}
+
+enum CutOffLogLevel {
+  off = 'off',
+  warn = 'warn',
+}
+
 interface IPermutateOptions {
-  // controls whether duplicates in input should result 
+  // Controls whether duplicates in input should result 
   // in duplicate result entries (for example: input = [1, 1, 2]). (Default: false)
   returnDuplicates?: boolean,
-  // specifies the maximum number of returned entries from the permutation,
+  // Specifies the maximum number of returned entries from the permutation,
   // idependently from the given input. (Default: Infinity)
   maxResultEntries?: number
+  // Applied strategy when result entries needs to be cut off. 
+  // More strategies are following). (Default: CutOffStrategy.linear)
+  cutOffStrategy?: CutOffStrategy
+  // Configured log level for cutting off result entries. 
+  // (Default: CutOffLogLevel.warn)
+  cutOffLogLevel?: CutOffLogLevel
 }
 ```
 
