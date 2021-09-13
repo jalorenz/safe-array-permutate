@@ -1,5 +1,5 @@
-import { permutate } from "./utils";
-import { CutOffLogLevel, CutOffStrategy, IPermutateOptions } from "./contracts";
+import { permutate } from './utils';
+import { CutOffLogLevel, CutOffStrategy, IPermutateOptions } from './contracts';
 
 export function safePermutate<T>(
   input: T[],
