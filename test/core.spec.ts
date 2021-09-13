@@ -81,7 +81,6 @@ describe('Core', () => {
   it.each([
     [CutOffLogLevel.off],
     [CutOffLogLevel.warn],
-    [CutOffLogLevel.error],
   ])('should call permutate function with given option parameter: %s for cut off log level', (cutOffLogLevel: CutOffLogLevel) => {
     const input = [1, 2];
     const options: IPermutateOptions = {

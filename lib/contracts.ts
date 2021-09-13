@@ -6,7 +6,6 @@ export enum CutOffStrategy {
 export enum CutOffLogLevel {
   off = 'off',
   warn = 'warn',
-  error = 'error'
 }
 
 export interface IPermutateOptions {
