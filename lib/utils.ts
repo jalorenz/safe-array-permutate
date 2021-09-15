@@ -27,13 +27,11 @@ export function permutate<T>(input: T[], options: IPermutateOptions): T[][] {
     /* eslint-disable */
     for (let j = 0; j < permutations.length; j++) {
       if(!!options.maxResultEntries && result.length >= options.maxResultEntries) {
-        if(options.cutOffLogLevel) {
-          if(options.cutOffLogLevel === CutOffLogLevel.warn) {
-            console.warn(`Configured limit of ${options.maxResultEntries} is reached!`)
-          }
-
-          break;
+        if(options.cutOffLogLevel && options.cutOffLogLevel === CutOffLogLevel.warn) {
+          console.warn(`Configured limit of ${options.maxResultEntries} is reached!`)
         }
+
+        break;
       }
 
       result.push([entry].concat(permutations[j]));
