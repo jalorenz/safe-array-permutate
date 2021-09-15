@@ -15,7 +15,7 @@ const options: IPermutateOptions = {
   cutOffLogLevel: CutOffLogLevel.off,
 }
 
-const result = safePermutate(input)
+const result = safePermutate(input, options)
 
 console.log(result) // [[1, 2], [2, 1]]
 ```
