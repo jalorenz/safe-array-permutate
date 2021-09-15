@@ -1,96 +1,39 @@
 import {
-  CutOffLogLevel, CutOffStrategy, IPermutateOptions, safePermutate,
-} from '../lib';
-import * as utils from '../lib/utils';
-
-jest.mock('../lib/utils', () => ({
-  permutate: jest.fn(),
-}));
+  CutOffLogLevel,
+  CutOffStrategy,
+  IPermutateOptions,
+  safePermutate
+} from "../lib";
+import * as utils from '../lib/utils'
+import * as options from '../lib/core/options'
 
 describe('Core', () => {
   beforeEach(() => {
     jest.resetAllMocks();
   });
 
-  it('should call permutate function with default options', () => {
+  it("should call getOptions with given undefined options", () => {
     const input = [1, 2];
-    const defaultOptions: IPermutateOptions = {
+    const spy = jest.spyOn(options, "getOptions")
+
+    safePermutate(input)
+
+    expect(spy).toHaveBeenCalledWith(undefined)
+  })
+
+  it("should call permutate function with options", () => {
+    const input = [1, 2]
+    const computedOptions: IPermutateOptions = {
       returnDuplicates: false,
       maxResultEntries: Infinity,
       cutOffStrategy: CutOffStrategy.linear,
       cutOffLogLevel: CutOffLogLevel.warn,
-    };
+    }
+    jest.spyOn(options, "getOptions").mockReturnValue(computedOptions)
+    const spy = jest.spyOn(utils, "permutate")
 
-    safePermutate(input);
+    safePermutate(input)
 
-    expect(utils.permutate).toHaveBeenCalledWith(input, defaultOptions);
-  });
-
-  it.each([[false], [true]])(
-    'should call permutate function with given option parameter: %s for returning of duplicates',
-    (returnDuplicates: boolean) => {
-      const input = [1, 2];
-      const options: IPermutateOptions = {
-        returnDuplicates,
-        maxResultEntries: Infinity,
-        cutOffStrategy: CutOffStrategy.linear,
-        cutOffLogLevel: CutOffLogLevel.warn,
-      };
-
-      safePermutate(input, options);
-
-      expect(utils.permutate).toHaveBeenCalledWith(input, options);
-    },
-  );
-
-  it.each([
-    [10],
-    [100],
-    [1000],
-  ])('should call permutate function with given option parameter: %s for the max. length of returned entries', (maxResultEntries: number) => {
-    const input = [1, 2];
-    const options: IPermutateOptions = {
-      maxResultEntries,
-      returnDuplicates: false,
-      cutOffStrategy: CutOffStrategy.linear,
-      cutOffLogLevel: CutOffLogLevel.warn,
-    };
-
-    safePermutate(input, options);
-
-    expect(utils.permutate).toHaveBeenCalledWith(input, options);
-  });
-
-  it.each([
-    [CutOffStrategy.linear],
-  ])('should call permutate function with given option parameter: %s for cut off strategy', (cutOffStrategy: CutOffStrategy) => {
-    const input = [1, 2];
-    const options: IPermutateOptions = {
-      maxResultEntries: Infinity,
-      returnDuplicates: false,
-      cutOffStrategy,
-      cutOffLogLevel: CutOffLogLevel.warn,
-    };
-
-    safePermutate(input, options);
-
-    expect(utils.permutate).toHaveBeenCalledWith(input, options);
-  });
-
-  it.each([
-    [CutOffLogLevel.off],
-    [CutOffLogLevel.warn],
-  ])('should call permutate function with given option parameter: %s for cut off log level', (cutOffLogLevel: CutOffLogLevel) => {
-    const input = [1, 2];
-    const options: IPermutateOptions = {
-      maxResultEntries: Infinity,
-      returnDuplicates: false,
-      cutOffStrategy: CutOffStrategy.linear,
-      cutOffLogLevel,
-    };
-
-    safePermutate(input, options);
-
-    expect(utils.permutate).toHaveBeenCalledWith(input, options);
-  });
+    expect(spy).toHaveBeenCalledWith(input, computedOptions)
+  })
 });
