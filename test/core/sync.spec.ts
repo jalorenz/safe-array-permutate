@@ -5,7 +5,7 @@ describe("Sync", () => {
   it.each([
     [true],
     [false]
-  ])("should call permutate function with input and result from getOptions", (returnDuplicates: boolean) => {
+  ])("should return result of permutate function called with input and result from getOptions", (returnDuplicates: boolean) => {
     const input = [1, 2]
     const returnedOptions: IPermutateOptions = {
       returnDuplicates,
