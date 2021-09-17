@@ -1,3 +1,19 @@
+# [2.0.0](https://github.com/jalorenz/safe-array-permutate/compare/v1.8.0...v2.0.0) (2021-09-17)
+
+
+### Features
+
+* **core:** adds async version of safePermutate function ([1ddaef0](https://github.com/jalorenz/safe-array-permutate/commit/1ddaef08cf1f3c40e51154ef49c4a5dc0a63b34d))
+* **core:** adds callback version of safePermutate function ([2c9894d](https://github.com/jalorenz/safe-array-permutate/commit/2c9894d1ba61471d933bf3ec883ff6218bf1c11a))
+* **core:** adds export of sync, callback and async version of function ([3282f9b](https://github.com/jalorenz/safe-array-permutate/commit/3282f9bbdf8ab5747f6c7cac0de6231d8be76fd9))
+* **core:** adds sync version of safePermutate function ([cc1270f](https://github.com/jalorenz/safe-array-permutate/commit/cc1270f57487590887433da9047b2a1deb3557c1))
+* **core:** removes v1 core function ([bf0a99b](https://github.com/jalorenz/safe-array-permutate/commit/bf0a99b96fbe079f5b4485cb7ef519085a3dd1a5))
+
+
+### BREAKING CHANGES
+
+* **core:** safePermutate<T>(...) has been removed
+
 # [1.8.0](https://github.com/jalorenz/safe-array-permutate/compare/v1.7.0...v1.8.0) (2021-09-13)
 
 
