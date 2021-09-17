@@ -1,13 +1,21 @@
 # safe-array-permutate
 
-This package provides a safe way to generate permutations for a given input.
+This package provides a safe way to generate permutations for a given input array. 
 
 [![Build Status](https://app.travis-ci.com/jalorenz/safe-array-permutate.svg?branch=main)](https://app.travis-ci.com/jalorenz/safe-array-permutate)
 [![Coverage Status](https://coveralls.io/repos/github/jalorenz/safe-array-permutate/badge.svg?branch=main)](https://coveralls.io/github/jalorenz/safe-array-permutate?branch=main)
 ![npm](https://img.shields.io/npm/dt/safe-array-permutate)
 
+## Usage
+
+The library exports the following functions:
+
+- `safePermutateSync<T>(input: T[], options?: IPermutateOptions)` (synchronous version)
+- `safePermutateAsync<T>(input: T[], options?: IPermutateOptions)` (asynchronous version)
+- `safePermutateCallback<T>(input: T[], callback: (error: Error | null, result?: T[][]) options?: IPermutateOptions` (callback version).
+
 ```ts
-import { safePermutate, IPermutateOptions, CutOffLogLevel } from "safe-array-permutate"
+import { safePermutateSync, IPermutateOptions, CutOffLogLevel } from "safe-array-permutate"
 
 const input = [1, 2]
 const options: IPermutateOptions = {
@@ -15,7 +23,7 @@ const options: IPermutateOptions = {
   cutOffLogLevel: CutOffLogLevel.off,
 }
 
-const result = safePermutate(input, options)
+const result = safePermutateSync(input, options)
 
 console.log(result) // [[1, 2], [2, 1]]
 ```
@@ -49,3 +57,6 @@ interface IPermutateOptions {
 }
 ```
 
+## Migration of v1 to v2
+
+Replace `safeArrayPermutate<T>(...)` with `safePermutateSync<T>(...)`.
