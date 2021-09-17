@@ -1,4 +1,4 @@
-import { CutOffLogLevel, CutOffStrategy, IPermutateOptions } from "../contracts";
+import { CutOffLogLevel, CutOffStrategy, IPermutateOptions } from '../contracts';
 
 export function getOptions(options?: IPermutateOptions) : IPermutateOptions {
   return {
