@@ -10,7 +10,7 @@ export function safePermutateCallback<T>(
   try {
     const result = permutate(input, getOptions(options));
     callback(null, result);
-  } catch (e) {
+  } catch (e: any) {
     callback(e);
   }
 }
