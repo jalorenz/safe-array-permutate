@@ -1,3 +1,10 @@
+## [2.0.1](https://github.com/jalorenz/safe-array-permutate/compare/v2.0.0...v2.0.1) (2021-09-22)
+
+
+### Bug Fixes
+
+* **callback:** fixes build issue ([d4188be](https://github.com/jalorenz/safe-array-permutate/commit/d4188be9ffeca3dd7f9e5434ced8323a679a1889))
+
 # [2.0.0](https://github.com/jalorenz/safe-array-permutate/compare/v1.8.0...v2.0.0) (2021-09-17)
 
 
