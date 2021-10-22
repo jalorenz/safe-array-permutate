@@ -1,5 +1,5 @@
 name: CI
-on: [push, pull_request]
+on: [pull_request]
 
 jobs:
   build:
@@ -28,8 +28,3 @@ jobs:
       - name: Build
         run: npm run build
 
-      - name: Semantic release
-        run: npm run semantic-release
-        env:
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
