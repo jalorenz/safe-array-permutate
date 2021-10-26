@@ -8,6 +8,8 @@ This package provides a safe way to generate permutations for a given input arra
 
 ## Usage
 
+Test
+
 The library exports the following functions:
 
 - `safePermutateSync<T>(input: T[], options?: IPermutateOptions)` (synchronous version)
